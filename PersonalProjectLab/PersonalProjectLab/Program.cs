@@ -19,38 +19,43 @@ namespace PersonalProjectLab
                 {
                     bool stillContinue = true;
 
+                    string input = "";
+                    int velocity1 = 0;
+                    int velocity2 = 0;
+                    int velocity3 = 0;
+
+                    //Prompt user to input 3 muzzle velocities
+                    Console.WriteLine("Input Velocity 1");
+                    input = Console.ReadLine();
+                    velocity1 = int.Parse(input);
+
+                    Console.WriteLine("Input Velocity 2");
+                    input = Console.ReadLine();
+                    velocity2 = int.Parse(input);
+
+                    Console.WriteLine("Input Velocity 3");
+                    input = Console.ReadLine();
+                    velocity3 = int.Parse(input);
+
+                    //Calculate average muzzle velocity
+                    SimpleBallisticsCalculator calculation = new SimpleBallisticsCalculator();
+
+                    decimal avg = calculation.CalculateAverageMuzzleVelocity(velocity1, velocity2, velocity3);
+
+                    //Write average muzzle velocity to the console
+                    Console.WriteLine("Average Muzzle Velocity: " + avg);
+
+                    //Prompt user to indicate if they wish to calculate angle
+                    Console.WriteLine("Enter c to calculate Muzzle Angle or q to quit");
+                    string continueStat = Console.ReadLine();
+
+                    if (continueStat == "q")
+                    {
+                        stillContinue = false;
+                    }
+
                     while (stillContinue)
                     {
-                        string input = "";
-                        int velocity1 = 0;
-                        int velocity2 = 0;
-                        int velocity3 = 0;
-
-                        //Prompt user to input 3 muzzle velocities
-                        Console.WriteLine("Input Velocity 1");
-                        input = Console.ReadLine();
-                        velocity1 = int.Parse(input);
-
-                        Console.WriteLine("Input Velocity 2");
-                        input = Console.ReadLine();
-                        velocity2 = int.Parse(input);
-
-                        Console.WriteLine("Input Velocity 3");
-                        input = Console.ReadLine();
-                        velocity3 = int.Parse(input);
-
-                        //Calculate average muzzle velocity
-                        SimpleBallisticsCalculator calculation = new SimpleBallisticsCalculator();
-
-                        decimal avg = calculation.CalculateAverageMuzzleVelocity(velocity1, velocity2, velocity3);
-
-                        //Write average muzzle velocity to the console
-                        Console.WriteLine("Average Muzzle Velocity: " + avg);
-
-                        //Prompt user to indicate if they wish to calculate angle
-                        Console.WriteLine("Enter c to calculate Muzzle Angle or q to quit");
-                        string continueStat = Console.ReadLine();
-
                         string angleInput = "";
                         decimal velocity = Convert.ToDecimal(avg);
                         decimal distance = 0.00m;
@@ -67,14 +72,9 @@ namespace PersonalProjectLab
                         //Write angle to the console
                         Console.WriteLine("Muzzle Angle: " + angle + " Degrees Above Horizontal");
                         stillContinue = false;
-
-                        //If no, return to top of program
-                        if (continueStat == "q")
-                        {
-                            stillContinue = true;
-                        }
                     }
 
+                    //If no, return to top of program
                     
 
                 }
