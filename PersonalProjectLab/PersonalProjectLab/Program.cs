@@ -18,7 +18,6 @@ namespace PersonalProjectLab
                 if (stat == "1")
                 {
                     bool stillContinue = true;
-                    string continueStat = "";
 
                     while (stillContinue)
                     {
@@ -50,7 +49,7 @@ namespace PersonalProjectLab
 
                         //Prompt user to indicate if they wish to calculate angle
                         Console.WriteLine("Enter c to calculate Muzzle Angle or q to quit");
-                        continueStat = Console.ReadLine();
+                        string continueStat = Console.ReadLine();
 
                         string angleInput = "";
                         decimal velocity = Convert.ToDecimal(avg);
@@ -72,7 +71,7 @@ namespace PersonalProjectLab
                         //If no, return to top of program
                         if (continueStat == "q")
                         {
-                            stillContinue = false;
+                            stillContinue = true;
                         }
                     }
 
